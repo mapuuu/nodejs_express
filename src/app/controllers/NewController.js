@@ -1,7 +1,6 @@
 class NewsController {
-
     // [Get /news]
-    index(req, res) {        
+    index(req, res) {
         res.render('news');
     }
 
@@ -10,4 +9,4 @@ class NewsController {
         res.send('NEW DETAIL!!!');
     }
 }
-module.exports = new NewsController;
+module.exports = new NewsController();
