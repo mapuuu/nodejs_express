@@ -1,10 +1,9 @@
 const Course = require('../models/Course');
-const {mutipleMongooseToObject} = require('../../util/mongoose');
+const { mutipleMongooseToObject } = require('../../util/mongoose');
 
 class SiteController {
     // [Get /]
     index(req, res, next) {
-
         // Ex1: Callback
         // Course.find({}, function(err, courses) {
         //     if(!err) {
@@ -15,10 +14,10 @@ class SiteController {
         // });
 
         // Ex2:  Promiss
-        Course.find({}) 
-            .then(courses => {
+        Course.find({})
+            .then((courses) => {
                 res.render('home', {
-                    courses: mutipleMongooseToObject(courses)
+                    courses: mutipleMongooseToObject(courses),
                 });
             })
             .catch(next);
