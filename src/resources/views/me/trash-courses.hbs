@@ -47,7 +47,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Bạn có chắc chắn xóa?</p>
+        <p>Hành động này không thể khôi phục. Bạn có chắc chắn xóa vĩnh viễn?</p>
       </div>
       <div class="modal-footer">
         <button id="delete-confirm-btn" type="button" class="btn btn-danger">Xóa bỏ</button>
@@ -71,7 +71,7 @@
         deleteBtn.onclick = function(e){
             courseId= e.target.dataset.id; // khi onclick vào button xóa của khóa học nào thì sẽ nhận được id của khóa học đó
             deleteConfirm.onclick= function(e){  // sau đó click vào button confirm xóa để 
-                deleteForm.action = `/courses/${courseId}?_method=DELETE`; // truyền  url chứa id của từng khóa học vào action và với method DELETE
+                deleteForm.action = `/courses/${courseId}/force?_method=DELETE`; // truyền  url chứa id của từng khóa học vào action và với method DELETE
                 deleteForm.submit(); // và submit form .
             }
         }

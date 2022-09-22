@@ -15,6 +15,7 @@ router.patch('/:id/restore', coursesController.restore);
 
 router.delete('/:id', coursesController.delete);
 
+router.delete('/:id/force', coursesController.forceDelete);
 
 router.get('/:slug', coursesController.show);
 

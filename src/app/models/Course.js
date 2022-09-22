@@ -19,7 +19,7 @@ const Course = new Schema(
             type: String,
             maxLength: 255,
         },
-        slug: { type: String, slug: 'name', unique: true},
+        slug: { type: String, slug: 'name', unique: true },
         videoId: {
             type: String,
         },
@@ -33,8 +33,8 @@ const Course = new Schema(
 
 mongoose.plugin(slug);
 
-Course.plugin(mongooseDelete, { 
-    deletedAt : true,
+Course.plugin(mongooseDelete, {
+    deletedAt: true,
     overrideMethods: 'all',
 });
 
