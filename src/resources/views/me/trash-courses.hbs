@@ -1,8 +1,8 @@
 <div class="mt-4">
     
     <div>
-        <h3>Khóa học của tôi</h3>
-        <a href="/me/trash/courses">Khóa học đã xóa</a>
+        <h3>Khóa học đã xóa</h3>
+        <a href="/me/stored/courses">Trở lại</a>
     </div>
 
     <table class="table mt-4">
@@ -23,15 +23,14 @@
                 <td>{{this.image}}</td>
                 <td>{{this.createdAt}}</td>
                 <td>
-                    <a href="/courses/{{this._id}}/edit" class="btn btn-light">Sửa</a>
-                    <a href="" class="delete-btn btn btn-light" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-course-modal">Xóa</a>
+                    <a href="" class="btn btn-light btn-restore" data-id="{{this._id}}">Khôi phục</a>
+                    <a href="" class="delete-btn btn btn-light" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-course-modal">Xóa vĩnh viễn</a>
                 </td>
             </tr>
             {{else}}
             <tr>
                 <td colspan="5" class="text-center">
-                    Bạn chưa có khóa học nào!!!
-                    <a href="/courses/create">Đăng khóa học</a>
+                    Danh sách trống!!!
                 </td>
             </tr>
             {{/each}}
@@ -58,12 +57,13 @@
   </div>
 </div>
 
-{{!-- Delete hidden form --}}
+
 <form name="delete-course-form" method="POST"></form>
+<form name="restore-form-course" method="POST"></form>
 
 <script>
     
-    const deleteBtns =Array.from( document.getElementsByClassName('delete-btn')); // lấy tất cả các button delete dưới dạng mảng
+    const deleteBtns = Array.from( document.getElementsByClassName('delete-btn')); // lấy tất cả các button delete dưới dạng mảng
     const deleteConfirm = document.getElementById('delete-confirm-btn')
     const deleteForm = document.forms['delete-course-form']; // lấy element form thông qua name của form
     let courseId;
@@ -76,5 +76,20 @@
             }
         }
     }
+    
+
+    const btnsRestore = document.querySelectorAll('.btn-restore');     
+    btnsRestore.forEach(e => {
+        e.addEventListener('click', (event) => {
+            event.preventDefault();
+            const courseId = e.dataset.id;
+            const restoreForm = document.forms["restore-form-course"];
+            restoreForm.action = `/courses/${courseId}/restore?_method=PATCH`
+            restoreForm.submit();
+        })
+    })
+
+
+
 </script>
 
