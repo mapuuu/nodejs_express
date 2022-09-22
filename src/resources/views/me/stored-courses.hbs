@@ -20,7 +20,7 @@
                 <td>{{this.createdAt}}</td>
                 <td>
                     <a href="/courses/{{this._id}}/edit" class="btn btn-light">Sửa</a>
-                    <a href="" class="btn btn-light" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-course-modal">Xóa</a>
+                    <a href="" class="delete-btn btn btn-light" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-course-modal">Xóa</a>
                 </td>
             </tr>
             {{/each}}
@@ -40,28 +40,31 @@
         <p>Bạn có chắc chắn xóa?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger">Xóa bỏ</button>
+        <button id="delete-confirm-btn" type="button" class="btn btn-danger">Xóa bỏ</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
       </div>
     </div>
   </div>
 </div>
 
-<script>
-    const exampleModal = document.getElementById('exampleModal')
-    exampleModal.addEventListener('show.bs.modal', event => {
-        // Button that triggered the modal
-        const button = event.relatedTarget
-        // Extract info from data-bs-* attributes
-        const recipient = button.getAttribute('data-bs-whatever')
-        // If necessary, you could initiate an AJAX request here
-        // and then do the updating in a callback.
-        //
-        // Update the modal's content.
-        const modalTitle = exampleModal.querySelector('.modal-title')
-        const modalBodyInput = exampleModal.querySelector('.modal-body input')
+{{!-- Delete hidden form --}}
 
-        modalTitle.textContent = `New message to ${recipient}`
-        modalBodyInput.value = recipient
-    })
+<form name="delete-course-form" method="POST"></form>
+
+<script>
+    
+    const deleteBtns =Array.from( document.getElementsByClassName('delete-btn')); // lấy tất cả các button delete dưới dạng mảng
+    const deleteConfirm = document.getElementById('delete-confirm-btn')
+    const deleteForm = document.forms['delete-course-form']; // lấy element form thông qua name của form
+    let courseId;
+    for(const deleteBtn of deleteBtns){
+        deleteBtn.onclick = function(e){
+            courseId= e.target.dataset.id; // khi onclick vào button xóa của khóa học nào thì sẽ nhận được id của khóa học đó
+            deleteConfirm.onclick= function(e){  // sau đó click vào button confirm xóa để 
+                deleteForm.action = `/courses/${courseId}?_method=DELETE`; // truyền  url chứa id của từng khóa học vào action và với method DELETE
+                deleteForm.submit(); // và submit form .
+            }
+        }
+    }
 </script>
+
