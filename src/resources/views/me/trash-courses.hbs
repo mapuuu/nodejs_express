@@ -11,7 +11,7 @@
                 <th scope="col">STT</th>
                 <th scope="col">Tên khóa học</th>
                 <th scope="col">Ảnh</th>
-                <th scope="col">Thời gian tạo</th>
+                <th scope="col">Thời xóa tạo</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -21,7 +21,7 @@
                 <th scope="row">{{sum @index 1}}</th>
                 <td>{{this.name}}</td>
                 <td>{{this.image}}</td>
-                <td>{{this.createdAt}}</td>
+                <td>{{this.deletedAt}}</td>
                 <td>
                     <a href="" class="btn btn-light btn-restore" data-id="{{this._id}}">Khôi phục</a>
                     <a href="" class="delete-btn btn btn-light" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-course-modal">Xóa vĩnh viễn</a>
