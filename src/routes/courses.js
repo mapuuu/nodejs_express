@@ -11,6 +11,8 @@ router.get('/:id/edit', coursesController.edit);
 
 router.post('/handle-form-actions', coursesController.handleFormActions);
 
+router.post('/restore-form-actions', coursesController.restoreFormActions);
+
 router.put('/:id', coursesController.update);
 
 router.patch('/:id/restore', coursesController.restore);
