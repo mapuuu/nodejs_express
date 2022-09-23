@@ -26,9 +26,16 @@
             <tr>
                 <td></td>
                 <th scope="col">STT</th>
-                <th scope="col">Tên khóa học</th>
+                <th scope="col">
+                    Tên khóa học
+                    {{{sortable 'name' _sort}}}
+                    
+                </th>
                 <th scope="col">Ảnh</th>
-                <th scope="col">Thời gian tạo</th>
+                <th scope="col">
+                    Thời gian tạo
+                    {{{sortable 'createdAt' _sort}}}
+                </th>
                 <th scope="col"></th>
             </tr>
         </thead>
