@@ -5,14 +5,7 @@
         <a href="/me/stored/courses">Trở lại</a>
 
         <div class="mt-4 d-flex align-items-center">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="checkBoxAll">
-                <label class="form-check-label" for="checkBoxAll">
-                    Chọn tất cả
-                </label>
-            </div>
-
-            <select class="form-control form-control-sm" style="width: 160px; margin: 0 16px" name="action" required="true">
+            <select class="form-control form-control-sm" style="width: 160px; margin-right: 16px" name="action" required="true">
                 <option value="">-- Chọn hành động --</option>
                 <option value="restore">Khôi phục</option>
                 <option value="forceDelete">Xóa vĩnh viễn</option>
@@ -25,7 +18,11 @@
     <table class="table mt-4">
         <thead>
             <tr>
-                <td></td>
+                <th>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="checkBoxAll">
+                    </div>
+                </th>
                 <th scope="col">STT</th>
                 <th scope="col">Tên khóa học</th>
                 <th scope="col">Ảnh</th>

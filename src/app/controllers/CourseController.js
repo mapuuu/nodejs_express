@@ -26,7 +26,7 @@ class CourseController {
         course
             .save()
             .then(() => res.redirect('/me/stored/courses'))
-            .catch((error) => {});
+            .catch(next);
 
         // res.send('COURSE SAVED!!!');
         res.render('courses/create');
